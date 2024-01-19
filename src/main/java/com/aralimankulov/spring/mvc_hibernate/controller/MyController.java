@@ -18,15 +18,13 @@ public class MyController {
 
     @RequestMapping("/")
     public String showAllUsers(Model model) {
-        List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("users", allUsers);
+        model.addAttribute("users", userService.getAllUsers());
         return "all-users";
     }
 
     @RequestMapping("/addNewUser")
     public String addNewUser(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
+        model.addAttribute("user", new User());
         return "user-info";
     }
 
@@ -38,8 +36,7 @@ public class MyController {
 
     @RequestMapping("/updateInfo")
     public String updateUser(@RequestParam("userId") int id, Model model) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.getUser(id));
         return "user-info";
     }
 
